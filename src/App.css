@@ -1,0 +1,32 @@
+body{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+.wrapper{
+    width: 400px;
+    height: 500px;
+    border: none;
+    outline: none;
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 1rem;
+    background: #FDE7BB;
+    padding: 1rem;
+}
+.nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+.nav .title{
+    text-align: center;
+    font-size: 1.3em;
+    user-select: none;
+    /* padding: 1rem; */
+}
+.dark .wrapper{
+    background: #121212;
+    color: #fff;
+}
