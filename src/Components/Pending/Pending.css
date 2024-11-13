@@ -1,0 +1,20 @@
+.pending{
+    padding: 1rem;
+    overflow: hidden;
+}
+.pending ul{
+    list-style: none;
+    font-size: 1.5em;
+    user-select: none;
+  
+}
+.list{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+.one{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}

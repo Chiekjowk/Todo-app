@@ -13,6 +13,7 @@ body{
     border-radius: 1rem;
     background: #FDE7BB;
     padding: 1rem;
+    overflow: hidden;
 }
 .nav{
     display: flex;
@@ -27,5 +28,60 @@ body{
 }
 .dark .wrapper{
     background: #121212;
+    color: #fff;
+}
+.input{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+}
+.input input{
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 1rem;
+    font-size: 1em;
+    border-radius: 1rem;
+    background: #fff;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+}
+.input input::placeholder{
+    font-size: 1.5em;
+    color: #aaa;
+}
+.input button{
+    width: 20%;
+    border: none;
+    outline: none;
+    padding: 1rem;
+    border-radius: 1rem;
+    font-size: 1em;
+    font-weight: 900;
+    background: #fff;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+}
+.main button{
+    width: 100%;
+    border: none;
+    border-radius: .5rem;
+    padding: 1rem;
+    font-size: 1.2em;
+}
+.main button:nth-child(1){
+    background: #ff6600;
+    color: #fff;
+}
+.main button:nth-child(2){
+    background: #AA5486;
     color: #fff;
 }
