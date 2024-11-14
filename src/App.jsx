@@ -8,6 +8,8 @@ import './App.css'
 function App(){
   const [mode , setMode] = useState(false)
   const [todo, setTodo] = useState([])
+  const [isComplete , setIsComplete] = useState(false)
+  const [completedTodo, setCompletedTodo] = useState([])
  
   const taskRef = useRef();
 
@@ -34,18 +36,6 @@ function App(){
     taskRef.current.value = ''
   }
 
-
-  useEffect(()=>{
-    let storedTask = localStorage.getItem("todo")
-    if(storedTask == null){
-      setTodo([])
-    }
-    else{
-      setTodo(JSON.parse(storedTask));
-    }
-    
-  },[])
-  
   const deleteTask = (index) => {
     let storedTask = localStorage.getItem("todo")
     if(storedTask == null){
@@ -58,9 +48,42 @@ function App(){
     localStorage.setItem("todo", JSON.stringify(newTask));
     setTodo(newTask)
   }
+  const handleComplete = (index) => {
+    let filteredTask = [...todo[index]]
+    let updatedCompleteArr = [...completedTodo];
+    updatedCompleteArr.push(filteredTask);
+    setCompletedTodo(updatedCompleteArr);
+    deleteTask(index);
+    localStorage.setItem("completedTodo", JSON.stringify(updatedCompleteArr));
+  }
+
+  const deleteCompletedTask = (index) => {
+    let storedTask = localStorage.getItem("completedTodo")
+    if(storedTask == null){
+      storedTask = [];
+    }
+    else{
+      storedTask = JSON.parse(storedTask)
+    }
+    let newCompletedTask = storedTask.filter((value, id) => id !== index);
+    localStorage.setItem("completedTodo", JSON.stringify(newCompletedTask));
+    setCompletedTodo(newCompletedTask)
+  }
+
+  useEffect(()=>{
+    let storedTask = localStorage.getItem("todo")
+    if(storedTask == null){
+      setTodo([])
+    }
+    else{
+      setTodo(JSON.parse(storedTask));
+    }
+    
+  },[])
+  
 
   return (
-    <div className={mode ? "dark" : "light"}>
+    <div className={`app ${mode ? "dark" : "light"}`}>
       <div className="wrapper">
         <div className="nav">
           <div className="title">
@@ -79,10 +102,10 @@ function App(){
           <button onClick={inputTask}>Add</button>
         </div>
         <div className="main">
-          <button>Pending {`(${todo.length})`}</button>
-          <button>Completed {`(${todo.length})`}</button>
+          <button className={`btn ${isComplete === false && 'active'}`} onClick={() => setIsComplete(false)}>Pending {`(${todo.length})`}</button>
+          <button className={`btn ${isComplete === true && 'active'}`} onClick={() => setIsComplete(true)}>Completed {`(${completedTodo.length})`}</button>
         </div>
-        <Pending todo={todo} deleteTask={deleteTask}/>
+        <Pending todo={todo} completedTodo={completedTodo} deleteTask={deleteTask} isComplete={isComplete} handleComplete={handleComplete} deleteCompletedTask={deleteCompletedTask}/>
       </div>
     </div>
   )

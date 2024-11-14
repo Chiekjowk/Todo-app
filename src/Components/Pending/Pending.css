@@ -18,3 +18,7 @@
     align-items: center;
     gap: 1rem;
 }
+.icon{
+    display: flex;
+    gap: 1rem;
+}

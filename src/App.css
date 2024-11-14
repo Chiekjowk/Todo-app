@@ -77,11 +77,15 @@ body{
     padding: 1rem;
     font-size: 1.2em;
 }
-.main button:nth-child(1){
+/* .main button:nth-child(1){
     background: #ff6600;
     color: #fff;
-}
-.main button:nth-child(2){
+} */
+/* .main button:nth-child(2){
     background: #AA5486;
     color: #fff;
+} */
+
+.active{
+    background:  #059212;
 }
